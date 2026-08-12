@@ -1,0 +1,97 @@
+generated: '2026-08-12'
+method: probed
+source: live GET of /.well-known/*, /llms.txt and spec paths on every Multiply host
+host: https://www.gomultiply.com
+summary: >-
+  Multiply serves NO /.well-known/ discovery surface on any host it controls — no security.txt,
+  no OIDC or OAuth authorization-server metadata, no api-catalog, no ai-plugin.json, and no A2A
+  agent card at either the 1.0 (/.well-known/agent-card.json) or legacy (/.well-known/agent.json)
+  path. No WellKnown or SecurityTxt pointer is emitted in apis.yml, because every /.well-known/
+  path returned 404. The one machine-readable document Multiply DOES publish is /llms.txt, saved
+  verbatim to llms/multiply-llms.txt.
+notes: >-
+  SOFT-404 WARNING — www.gomultiply.com is a client-side SPA (Vite/React on Vercel behind
+  Cloudflare) that answers ANY unknown application route with a 200 and the same 7,655-byte HTML
+  shell: /docs, /api-docs, /terms and /mcp all return that shell and are NOT real pages. The
+  /.well-known/ prefix is exempt from that catch-all — a control probe of
+  /.well-known/zzz-nonexistent-abc123 returned a hard 404 with the 9-byte body "Not found",
+  identical to the 404s recorded below — so the .well-known misses here are real misses and the
+  200s on SPA routes are recorded as shell responses, not documents.
+control_probe:
+  path: /.well-known/zzz-nonexistent-abc123
+  status: 404
+  body: Not found
+  conclusion: no catch-all on the /.well-known/ prefix; recorded 404s are genuine
+documents:
+- path: /llms.txt
+  status: 200
+  content_type: text/plain
+  file: ../llms/multiply-llms.txt
+  description: >-
+    Provider-published llms.txt listing the nine marketing pages and eight browser games. It names
+    no API, no docs host and no developer surface.
+- path: /robots.txt
+  status: 200
+  note: Allows all agents; points at /sitemap.xml.
+- path: /sitemap.xml
+  status: 200
+  note: 17 URLs, all marketing/blog/games pages. No /docs, /developers or /api entry.
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/openid-configuration
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  status: 404
+- path: /.well-known/oauth-protected-resource
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
+- path: /.well-known/agent-card.json
+  status: 404
+- path: /.well-known/agent.json
+  status: 404
+- path: /.well-known/mcp.json
+  status: 404
+- path: /openapi.json
+  status: 404
+- path: /openapi.yaml
+  status: 404
+- path: /swagger.json
+  status: 404
+- path: /docs
+  status: 200
+  note: SPA shell, not a docs site — byte-identical to the homepage HTML. Not a hit.
+- path: /api-docs
+  status: 200
+  note: SPA shell, not an API reference. Not a hit.
+other_hosts:
+- host: https://app.getkalos.com
+  note: >-
+    The "Sign in" button on gomultiply.com points here (Kalos is Multiply's former name;
+    getkalos.com 301s to www.gomultiply.com). A Next.js app is deployed at this host but every
+    path probed returns 404, including /, /login, /signin, /sign-in, /auth, /dashboard and /app.
+    No Login pointer is wired in apis.yml as a result.
+  probes:
+  - {path: /, status: 404}
+  - {path: /login, status: 404}
+  - {path: /signin, status: 404}
+  - {path: /auth, status: 404}
+  - {path: /dashboard, status: 404}
+- host: api.gomultiply.com
+  note: No DNS record. Same for docs., developer., developers. and status.gomultiply.com.
+  dns: NXDOMAIN
+- host: app.gomultiply.com
+  note: Resolves to Vercel but returns 404 at the root.
+  dns: vercel-dns-016.com
+x-evidence:
+  fetched: '2026-08-12'
+  probes:
+  - {url: 'https://www.gomultiply.com/llms.txt', http_status: 200}
+  - {url: 'https://www.gomultiply.com/.well-known/security.txt', http_status: 404}
+  - {url: 'https://www.gomultiply.com/.well-known/agent-card.json', http_status: 404}
+  - {url: 'https://www.gomultiply.com/.well-known/agent.json', http_status: 404}
+  - {url: 'https://www.gomultiply.com/openapi.json', http_status: 404}
+  - {url: 'https://www.gomultiply.com/.well-known/zzz-nonexistent-abc123', http_status: 404}
+  - {url: 'https://app.getkalos.com/login', http_status: 404}

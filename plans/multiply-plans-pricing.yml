@@ -1,0 +1,85 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+provider: Multiply
+providerId: multiply
+generated: '2026-08-12'
+created: '2026-08-12'
+modified: '2026-08-12'
+method: searched
+source: https://www.gomultiply.com/pricing
+sources:
+- https://www.gomultiply.com/pricing
+- https://www.gomultiply.com/assets/index-DMfYoqyR.js
+currency: USD
+billing_periods: [monthly]
+plan_count: 3
+description: >-
+  Multiply publishes three named tiers for its managed B2B paid-media service — Growth, Scale and
+  Enterprise. Two of the three carry a published starting price and a monthly media-spend band;
+  Enterprise is quoted. These are AGENCY SERVICE plans, not API plans: Multiply sells a managed
+  media program (LinkedIn, Google and ChatGPT Ads) run by a dedicated strategist on top of its
+  Self-Learning Advertising platform. There is no developer plan, no free tier, no self-serve
+  signup and no metered API pricing, because Multiply publishes no public API.
+notes: >-
+  PROVENANCE — www.gomultiply.com is a client-side React SPA, so /pricing returns an empty HTML
+  shell to any fetch. The tier names, prices, periods and feature bullets recorded below were read
+  verbatim from the site's own published JavaScript bundle
+  (https://www.gomultiply.com/assets/index-DMfYoqyR.js), which is the delivery mechanism for the
+  pricing page itself. Nothing here is inferred: every price string, spend band and feature line is
+  a literal from that bundle. The site's FAQ adds the qualifier "Pricing is tailored to your goals
+  and scale rather than a fixed package. As a guide, Multiply is the right fit for teams spending
+  upwards of $10,000/month on paid ads", so the figures below are floors, not rate cards. The
+  bundle hash is part of the URL and will change on the next deploy.
+qualifiers:
+  quote_based: true
+  fit_threshold: Teams spending upwards of $10,000/month on paid ads
+  cta: Book a demo (HubSpot meetings link, meetings-na2.hubspot.com/matt-jayson)
+  free_tier: false
+  self_serve_signup: false
+plans:
+- id: multiply-growth
+  name: Growth
+  type: managed-service
+  price: 6000
+  price_label: Starting at $6K
+  period: month
+  featured: false
+  description: 'Verbatim: "For teams making new bets and starting to scale paid media"'
+  entries:
+  - {label: Managed service for paid media, name: managed_service, type: feature, metric: feature, limit: 1, timeFrame: month}
+  - {label: Monthly media spend band, name: media_spend, type: limit, metric: usd, min: 10000, max: 100000, timeFrame: month}
+  - {label: 'Ad platforms: LinkedIn, Google, ChatGPT Ads', name: ad_platforms, type: feature, metric: feature, limit: 3, timeFrame: month}
+  - {label: Dedicated strategist, name: dedicated_strategist, type: support, metric: feature, limit: 1, timeFrame: month}
+  - {label: Multiply AI Platform (AI Agents), name: ai_platform, type: feature, metric: feature, limit: 1, timeFrame: month}
+- id: multiply-scale
+  name: Scale
+  type: managed-service
+  price: 12000
+  price_label: Starting at $12K
+  period: month
+  featured: true
+  description: 'Verbatim: "For teams running multi-channel campaigns"'
+  entries:
+  - {label: Managed service for paid media, name: managed_service, type: feature, metric: feature, limit: 1, timeFrame: month}
+  - {label: Monthly media spend band, name: media_spend, type: limit, metric: usd, min: 100000, max: 250000, timeFrame: month}
+  - {label: 'Ad platforms: LinkedIn, Google, ChatGPT Ads', name: ad_platforms, type: feature, metric: feature, limit: 3, timeFrame: month}
+  - {label: Dedicated strategist & Premier Support, name: dedicated_strategist_premier, type: support, metric: feature, limit: 1, timeFrame: month}
+  - {label: Multiply AI Platform (AI Agents), name: ai_platform, type: feature, metric: feature, limit: 1, timeFrame: month}
+- id: multiply-enterprise
+  name: Enterprise
+  type: enterprise
+  price: null
+  price_label: Custom
+  period: pricing
+  featured: false
+  description: 'Verbatim: "For large teams with custom requirements"'
+  entries:
+  - {label: Everything in Scale, name: scale_inclusive, type: feature, metric: feature, limit: 1, timeFrame: month}
+  - {label: Custom integrations, name: custom_integrations, type: feature, metric: feature, limit: -1, timeFrame: month}
+  - {label: Custom reporting, name: custom_reporting, type: feature, metric: feature, limit: -1, timeFrame: month}
+x-evidence:
+  fetched: '2026-08-12'
+  probes:
+  - {url: 'https://www.gomultiply.com/pricing', http_status: 200, note: 'SPA shell — no pricing text in the served HTML'}
+  - {url: 'https://www.gomultiply.com/assets/index-DMfYoqyR.js', http_status: 200, note: '1,104,481-byte bundle carrying the verbatim pricing table'}
+  - {url: 'https://www.gomultiply.com/llms.txt', http_status: 200, note: 'names /pricing as "Growth, Scale, and Enterprise plans"'}

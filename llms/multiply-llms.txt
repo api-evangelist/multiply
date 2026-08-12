@@ -1,0 +1,30 @@
+# Multiply
+
+> AI-native media agency for B2B. We combine AI with in-house media experts to run Google and LinkedIn ad programs that continuously improve.
+
+## Pages
+
+- [Home](/): Multiply — AI-native media agency for B2B.
+- [Product](/product): Self-Learning Ads and AI-powered media buying for B2B growth.
+- [Managed Service](/managed-service): Our approach and managed ad programs.
+- [Customers](/customers): Results and case studies from B2B partners.
+- [Pricing](/pricing): Growth, Scale, and Enterprise plans.
+- [Demo](/demo): Book a demo with the Multiply team.
+- [Blog](/blog): Insights on B2B paid media, AI-driven advertising, and growth strategy.
+- [News](/news): Company news and announcements.
+- [Privacy](/privacy): Privacy policy for gomultiply.com.
+
+## Games
+
+- [Games](/games): Little games for B2B marketers.
+- [Logo Quiz](/games/logo-quiz): Guess the B2B brand from its logo.
+- [Creative Fatigue Speed Run](/games/creative-fatigue): Keep your CTR alive as long as you can.
+- [Find the ICP](/games/find-the-icp): Identify your ideal customer profile.
+- [Mystery Door](/games/mystery-door): Find your ICP hiding behind the right door.
+- [CACman](/games/cac-man): Pac-Man, but for B2B pipeline.
+- [Ad Invaders](/games/ad-invaders): Space Invaders, but it's your competitors.
+- [ABM Kong](/games/abm-kong): Donkey Kong, but you're climbing the funnel to reach your ICP.
+
+## Optional
+
+- [Multiply Raises $9.5M](/news/multiply-raises-9-5m): Announcement about our funding and launch.
