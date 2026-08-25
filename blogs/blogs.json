@@ -1,0 +1,14 @@
+{
+  "repo": "multiply",
+  "feeds": [
+    {
+      "source": "https://www.gomultiply.com/privacy",
+      "feed_url": "https://www.gomultiply.com/privacy",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-08-22T20:20:02Z"
+}
